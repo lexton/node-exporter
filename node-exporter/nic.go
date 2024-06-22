@@ -62,6 +62,8 @@ func (e *exporter) collectNICStats(ch chan<- prometheus.Metric) {
 		ch <- prometheus.MustNewConstMetric(nicTxBytesDesc, prometheus.CounterValue, parseFloat(fields[9]), nic)
 		ch <- prometheus.MustNewConstMetric(nicTxErrDesc, prometheus.CounterValue, parseFloat(fields[10]), nic)
 		ch <- prometheus.MustNewConstMetric(nicTxDropDesc, prometheus.CounterValue, parseFloat(fields[11]), nic)
+
+		// TODO(lexton): Add counters for, fifo frame compressed multicast
 	}
 
 	if err := scanner.Err(); err != nil {

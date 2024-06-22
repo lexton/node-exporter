@@ -11,46 +11,14 @@ import (
 )
 
 var (
-	cpuDesc = prometheus.NewDesc(
-		"node_cpu_seconds_total",
-		"Seconds the CPUs spent in each mode.",
-		[]string{"cpu", "mode"}, nil,
-	)
-	intrDesc = prometheus.NewDesc(
-		"node_intr_total",
-		"Total number of interrupts serviced.",
-		nil, nil,
-	)
-	ctxtDesc = prometheus.NewDesc(
-		"node_context_switches_total",
-		"Total number of context switches.",
-		nil, nil,
-	)
-	btimeDesc = prometheus.NewDesc(
-		"node_boot_time_seconds",
-		"Node boot time, in seconds since epoch.",
-		nil, nil,
-	)
-	processesDesc = prometheus.NewDesc(
-		"node_processes_total",
-		"Total number of processes.",
-		nil, nil,
-	)
-	procsRunningDesc = prometheus.NewDesc(
-		"node_procs_running",
-		"Number of processes in runnable state.",
-		nil, nil,
-	)
-	procsBlockedDesc = prometheus.NewDesc(
-		"node_procs_blocked",
-		"Number of processes blocked.",
-		nil, nil,
-	)
-	softirqDesc = prometheus.NewDesc(
-		"node_softirq_total",
-		"Total number of soft IRQs.",
-		[]string{"type"}, nil,
-	)
+	cpuDesc          = prometheus.NewDesc("node_cpu_seconds_total", "Seconds the CPUs spent in each mode.", []string{"cpu", "mode"}, nil)
+	intrDesc         = prometheus.NewDesc("node_intr_total", "Total number of interrupts serviced.", nil, nil)
+	ctxtDesc         = prometheus.NewDesc("node_context_switches_total", "Total number of context switches.", nil, nil)
+	btimeDesc        = prometheus.NewDesc("node_boot_time_seconds", "Node boot time, in seconds since epoch.", nil, nil)
+	processesDesc    = prometheus.NewDesc("node_processes_total", "Total number of processes.", nil, nil)
+	procsRunningDesc = prometheus.NewDesc("node_procs_running", "Number of processes in runnable state.", nil, nil)
+	procsBlockedDesc = prometheus.NewDesc("node_procs_blocked", "Number of processes blocked.", nil, nil)
+	softirqDesc      = prometheus.NewDesc("node_softirq_total", "Total number of soft IRQs.", []string{"type"}, nil)
 )
 
 func (e *exporter) describeCPUStats(ch chan<- *prometheus.Desc) {
